@@ -3,9 +3,10 @@ pipeline {
   stages {
     stage('Upload to AWS') {
       steps {
-        withAWS(region:'us-east-1') {
+        withAWS(region: 'us-east-1', credentials: 'AWS Jenkins') {
           s3Upload(bucket: 'ucty-project', file: 'index.html')
         }
+
       }
     }
 
